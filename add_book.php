@@ -1,4 +1,5 @@
 <?php
+require "db.php";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 $pub_id = $_POST['p_id'];
 $genre_id = $_POST['g_id'];
@@ -57,5 +58,6 @@ if ($pubCheck->num_rows == 0) {
 </body>
 
 </html>
+
 
 
