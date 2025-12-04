@@ -35,7 +35,7 @@ if ($pubCheck->num_rows == 0) {
 
 <!-- Don't forget to add the errror text here..-->
 
-<form method="post" action="add_books.php">
+<form method="post" action="add_book.php">
     <h1> ADD BOOKS </h1>
   <label>Book Title:<br><input type="text" name="title"></label><br><br>
   <label>Book ID:<br><input type="text" name="id" required></label><br><br>
@@ -53,4 +53,5 @@ if ($pubCheck->num_rows == 0) {
 <p><a href="admin_home.php">Back to Admin home</a></p>
 <p><a href="admin_books.php">Back to Admin books</a></p>
 </body>
+
 </html>
