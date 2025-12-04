@@ -1,24 +1,27 @@
 
 <?php
-session_start(); // must be first
+session_start();
+
+$adminEmail = "admin@tlib.com";
+$adminPassword = "admin123";
+$failure = false;
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  $adminEmail = "admin@tlib.com";
-  $adminPassword = "admin123";
-  $failure = false;  // If we have no POST data
-if ( isset($_POST['email']) && isset($_POST['password']) ) {
-    if ( strlen($_POST['email']) < 1 || strlen($_POST['password']) < 1 ) {
-        $failure = "User name and password are required";
-    } else {
-        if ( $_SESSION['email'] == $_POST['email'] && $_SESSION['password'] == $_POST['password']) {
-            if($_POST['email'] == $adminEmail && $_POST['password'] == $adminPassword){
-              header("Location: admin_home.php");
+
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    if ($email === $adminEmail && $password === $adminPassword) {
+        header("Location: admin_home.php");
+        exit;
+    }
+    if (isset($_SESSION['users'])) {
+        foreach ($_SESSION['users'] as $user) {
+            if ($user['email'] === $email && $user['password'] === $password) {
+                header("Location: home.php");
+                exit;
             }
-            header("Location: home.php");
-        } else {
-            $failure = "Incorrect username or password";
         }
     }
-}
+    $failure = "Incorrect username or password";
 }
 ?>
 <!doctype html>
@@ -43,5 +46,6 @@ if ( $failure !== false ) {
 </body>
 
 </html>
+
 
 
