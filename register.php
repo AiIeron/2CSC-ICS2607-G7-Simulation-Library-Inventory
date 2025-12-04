@@ -16,7 +16,7 @@ $s_ln = $_POST['lname'];
 $s_pn = $_POST['phone'];
 $s_email = $_POST['email'];
 
-$query = "INSERT INTO student (STUDENT_ID, STU_FNAME, STU_LNAME, STU_PHONE_NUM, STU_EMAIL)
+$query = "INSERT INTO STUDENT (STUDENT_ID, STU_FNAME, STU_LNAME, STU_PHONE_NUM, STU_EMAIL)
 VALUES ('$s_id', '$s_fn', '$s_ln', '$s_pn', '$s_email')";
 
 // Check connection
@@ -57,6 +57,7 @@ $conn->close();
 <p><a href="login.php">Back to login</a></p>
 </body>
 </html>
+
 
 
 
