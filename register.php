@@ -1,38 +1,36 @@
 <?php
 session_start(); // must be first
-
 require "db.php";
 
-if (!isset($_SESSION['users'])) {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {  // Only run if form is submitted
+    if (!isset($_SESSION['users'])) {
         $_SESSION['users'] = [];
- }
-$_SESSION['users'][] = [
-    "email" => $_POST['email'],
-    "password" => $_POST['password']
- ];
-$s_id = $_POST['id'];
-$s_fn = $_POST['fname'];
-$s_ln = $_POST['lname'];
-$s_pn = $_POST['phone'];
-$s_email = $_POST['email'];
+    }
+    $_SESSION['users'][] = [
+        "email" => $_POST['email'],
+        "password" => $_POST['password']
+    ];
+    $s_id = $_POST['id'];
+    $s_fn = $_POST['fname'];
+    $s_ln = $_POST['lname'];
+    $s_pn = $_POST['phone'];
+    $s_email = $_POST['email'];
 
-$query = "INSERT INTO STUDENT (STUDENT_ID, STU_FNAME, STU_LNAME, STU_PHONE_NUM, STU_EMAIL)
-VALUES ('$s_id', '$s_fn', '$s_ln', '$s_pn', '$s_email')";
+    $query = "INSERT INTO STUDENT (STUDENT_ID, STU_FNAME, STU_LNAME, STU_PHONE_NUM, STU_EMAIL)
+              VALUES ('$s_id', '$s_fn', '$s_ln', '$s_pn', '$s_email')";
 
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
 
+    if ($conn->query($query)) {
+        echo "Student registered successfully!";
+    } else {
+        echo "Error: " . $conn->error;
+    }
 
-if(mysqli_query($conn, $query)){
-    echo;
-}
-else{
-    echo "Error!: {$conn -> error}";
-}
-
-$conn->close();  
+    $conn->close();
+} 
 ?>
 
 <!DOCTYPE html>  
@@ -52,11 +50,11 @@ $conn->close();
   <label>Password:<br><input type="password" name="password" required></label><br><br>
   <label>Confirm Password:<br><input type="password" name="password2" required></label><br><br>
   <button type="submit" name="register" value="register">Register</button>
-  <button type="submit" name="register" value="register">Register</button>
 </form>
 <p><a href="login.php">Back to login</a></p>
 </body>
 </html>
+
 
 
 
