@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $s_ln = $_POST['lname'];
     $s_pn = $_POST['phone'];
     $s_email = $_POST['email'];
-    $s_pass = $_POST['password']
+    $s_pass = $_POST['password'];
     $query = "INSERT INTO STUDENT (STU_ID_NUM, STU_FNAME, STU_LNAME, STU_PHONE_NUM, STU_EMAIL, STU_PASS)
               VALUES ('$s_id', '$s_fn', '$s_ln', '$s_pn', '$s_email', '$s_pass')";
 
@@ -54,6 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <p><a href="login.php">Back to login</a></p>
 </body>
 </html>
+
 
 
 
