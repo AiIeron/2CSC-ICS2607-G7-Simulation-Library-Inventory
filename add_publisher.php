@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html>
 <head><meta charset="utf-8"><title>Truthary Lib | add punlisher</title></head>
 <body>
-<h2>Create Account (Student)</h2>
+<h2>Admin control</h2>
 
 <!-- Don't forget to add the errror text here..-->
 
@@ -30,4 +30,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <p><a href="admin_home.php">Back to Admin home</a></p>
 <p><a href="admin_publisher.php">Back to Admin publishers</a></p>
 </body>
+
 </html>
