@@ -11,9 +11,9 @@ if ( isset($_POST['email']) && isset($_POST['password']) ) {
     } else {
         if ( $_SESSION['email'] == $_POST['email'] && $_SESSION['password'] == $_POST['password']) {
             if($_POST['email'] == $adminEmail && $_POST['password'] == $adminPassword){
-              header("Location: admin_home.php")
+              header("Location: admin_home.php");
             }
-            header("Location: home.php")
+            header("Location: home.php");
         } else {
             $failure = "Incorrect username or password";
         }
@@ -43,4 +43,5 @@ if ( $failure !== false ) {
 </body>
 
 </html>
+
 
