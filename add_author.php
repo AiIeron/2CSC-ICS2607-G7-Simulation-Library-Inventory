@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html>
 <head><meta charset="utf-8"><title>Truthary Lib | add books</title></head>
 <body>
-<h2>Create Account (Student)</h2>
+<h2>Admin control</h2>
 
 <!-- Don't forget to add the errror text here..-->
 
@@ -28,4 +28,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </body>
 
 </html>
+
 
