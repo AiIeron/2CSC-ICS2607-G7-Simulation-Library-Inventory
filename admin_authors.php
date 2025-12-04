@@ -1,3 +1,7 @@
+<?php 
+require 'db.php'
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,6 +19,20 @@
         <th>Author Name</th>
         <th>Actions</th>
     </tr>
+    <?php
+$res = $conn->query("SELECT * FROM AUTHOR");
+
+while($row = $res->fetch_assoc()) {
+    echo "<tr>
+        <td>{$row['AUTHOR_ID']}</td>
+        <td>{$row['AUTHOR_NAME']}</td>
+        <td>
+            <a href='edit.php'>Edit</a> |
+            <a href='dekete.php' onclick='return confirm(\"Delete order?\")'>Delete</a>
+        </td>
+    </tr>";
+}
+?>
 </table>
 
 </body>
