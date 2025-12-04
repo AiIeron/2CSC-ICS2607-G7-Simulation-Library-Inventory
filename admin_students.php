@@ -1,3 +1,7 @@
+<?php 
+require 'db.php'
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,9 +20,25 @@
         <th>Last Name</th>
         <th>Email</th>
         <th>Phone</th>
-        <th><a href = "edit.php">Edit table</a></th>
-        <th><a href = "delete.php">Delete tuples</a></th>
+        <th>Actions</th>
     </tr>
+        <?php
+$res = $conn->query("SELECT * FROM student");
+
+while($row = $res->fetch_assoc()) {
+    echo "<tr>
+        <td>{$row['STU_ID_NUM']}</td>
+        <td>{$row['STU_FNAME']}</td>
+        <td>{$row['STU_LNAME']}</td>
+        <td>{$row['STU_EMAIL']}</td>
+        <td>{$row['STU_PHONE_NUM']}</td>
+        <td>
+            <a href='TOTAL.php?edit={$row['STU_ID_NUM']}'>Edit</a> |
+            <a href='TOTAL.php?delete={$row['STU_ID_NUM']}' onclick='return confirm(\"Delete order?\")'>Delete</a>
+        </td>
+    </tr>";
+}
+?>
 </table>
 
 </body>
