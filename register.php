@@ -3,13 +3,13 @@ session_start(); // must be first
 
 require "db.php";
 
-    if (!isset($_SESSION['users'])) {
+if (!isset($_SESSION['users'])) {
         $_SESSION['users'] = [];
-    }
-    $_SESSION['users'][] = [
-        "email" => $_POST['email'],
-        "password" => $_POST['password']
-    ];
+ }
+$_SESSION['users'][] = [
+    "email" => $_POST['email'],
+    "password" => $_POST['password']
+ ];
 $s_id = $_POST['id'];
 $s_fn = $_POST['fname'];
 $s_ln = $_POST['lname'];
@@ -57,6 +57,7 @@ $conn->close();
 <p><a href="login.php">Back to login</a></p>
 </body>
 </html>
+
 
 
 
