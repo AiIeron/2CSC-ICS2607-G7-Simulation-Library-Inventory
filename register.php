@@ -1,7 +1,7 @@
 <?php
 session_start(); // must be first
 
-require db.php;
+require "db.php";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $_SESSION['email'] = $_POST['email'];
   $_SESSION['password'] = $_POST['password'];
@@ -54,4 +54,5 @@ $conn->close();
 <p><a href="login.php">Back to login</a></p>
 </body>
 </html>
+
 
