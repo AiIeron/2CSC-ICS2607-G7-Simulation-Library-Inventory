@@ -16,7 +16,8 @@
         <th>Last Name</th>
         <th>Email</th>
         <th>Phone</th>
-        <th>Actions</th>
+        <th><a href = "edit.php">Edit table</a></th>
+        <th><a href = "delete.php">Delete tuples</a></th>
     </tr>
 </table>
 
