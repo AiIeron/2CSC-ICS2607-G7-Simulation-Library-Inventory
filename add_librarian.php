@@ -31,8 +31,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <button type="submit" name="register" value="register">ADD BOOK</button>
 </form>
 <p><a href="admin_home.php">Back to Admin home</a></p>
-<p><a href="admin_librarians.php">Back to Admin librarians</a></p>
+<p><a href="admin_books.php">Back to Admin books</a></p>
 </body>
-
 </html>
-
