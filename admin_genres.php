@@ -1,3 +1,7 @@
+<?php 
+require 'db.php'
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,6 +20,22 @@
         <th>Genre Description</th>
         <th>Actions</th>
     </tr>
+
+        <?php
+$res = $conn->query("SELECT * FROM GENRE");
+
+while($row = $res->fetch_assoc()) {
+    echo "<tr>
+        <td>{$row['GENRE_ID']}</td>
+        <td>{$row['GENRE_NAME']}</td>
+        <td>{$row['GENRE_DESC']}</td>
+        <td>
+            <a href='TOTAL.php?edit={$row['STU_ID_NUM']}'>Edit</a> |
+            <a href='TOTAL.php?delete={$row['STU_ID_NUM']}' onclick='return confirm(\"Delete order?\")'>Delete</a>
+        </td>
+    </tr>";
+}
+?>
 </table>
 
 </body>
