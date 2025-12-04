@@ -9,20 +9,22 @@
 
 <table border="1" cellpadding="5">
     <tr>
+        <th>Rental ID</th>
         <th>Book Title</th>
-        <th>Rent Date</th>
+        <th>Date Rented</th>
         <th>Expiry Date</th>
         <th>Fine</th>
     </tr>
 
-    <?php foreach ($rentals as $r): ?>
+    <?php while ($row = $result->fetch_assoc()): ?>
         <tr>
-            <td><?php echo htmlspecialchars($r['BOOK_TITLE']); ?></td>
-            <td><?php echo htmlspecialchars($r['RENT_DATE']); ?></td>
-            <td><?php echo htmlspecialchars($r['RENT_EXPIRY_DATE']); ?></td>
-            <td><?php echo $r['RENT_FINE'] === null ? "—" : htmlspecialchars($r['RENT_FINE']); ?></td>
+            <td><?= htmlspecialchars($row['RENT_ID']) ?></td>
+            <td><?= htmlspecialchars($row['BOOK_TITLE']) ?></td>
+            <td><?= htmlspecialchars($row['RENT_DATE']) ?></td>
+            <td><?= htmlspecialchars($row['RENT_EXPIRY_DATE']) ?></td>
+            <td><?= $row['RENT_FINE'] === null ? "None" : htmlspecialchars($row['RENT_FINE']) ?></td>
         </tr>
-    <?php endforeach; ?>
+    <?php endwhile; ?>
 </table>
 
 <br>
