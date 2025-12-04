@@ -1,5 +1,5 @@
 <?php
-
+require "db.php";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $fname = $_POST['fname'];
@@ -33,4 +33,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <p><a href="admin_home.php">Back to Admin home</a></p>
 <p><a href="admin_books.php">Back to Admin books</a></p>
 </body>
+
 </html>
