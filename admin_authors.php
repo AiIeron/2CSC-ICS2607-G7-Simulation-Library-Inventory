@@ -28,7 +28,7 @@ while($row = $res->fetch_assoc()) {
         <td>{$row['AUTHOR_NAME']}</td>
         <td>
             <a href='edit.php'>Edit</a> |
-            <a href='dekete.php' onclick='return confirm(\"Delete order?\")'>Delete</a>
+            <a href='delete.php' onclick='return confirm(\"Delete order?\")'>Delete</a>
         </td>
     </tr>";
 }
