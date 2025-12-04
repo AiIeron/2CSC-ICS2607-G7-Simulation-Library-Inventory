@@ -13,7 +13,7 @@
     <li><a href="my_rentals.php">My Rentals</a></li>
     <li><a href="rent_book.php">Rent a Book</a></li>
     <li><a href="profile.php">My Profile</a></li>
-    <li><a href="logout.php">Logout</a></li>
+    <li><a href="register.php">Logout</a></li>
 </ul>
 
 </body>
