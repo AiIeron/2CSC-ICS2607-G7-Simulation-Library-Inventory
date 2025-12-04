@@ -41,7 +41,7 @@ if ($pubCheck->num_rows == 0) {
   <label>Book ID:<br><input type="text" name="id" required></label><br><br>
   <label>Age Rating:<br><input type="num" name="age"></label><br><br>         
    <label>
-    <input type="radio" name="fruit" value="avail"> Available
+    <input type="radio" name="fruit" value="avail" checked> Available
   </label><br>
   <label>
     <input type="radio" name="fruit" value="n_avail"> Not Available
@@ -55,3 +55,4 @@ if ($pubCheck->num_rows == 0) {
 </body>
 
 </html>
+
