@@ -9,6 +9,7 @@
 
 <ul>
     <li><a href="admin_books.php">Manage Books</a></li>
+    <li><a href="admin_librarians.php">Manage Librarians</a></li>    
     <li><a href="admin_students.php">Manage Students</a></li>
     <li><a href="admin_authors.php">Manage Authors</a></li>
     <li><a href="admin_publishers.php">Manage Publishers</a></li>
