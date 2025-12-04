@@ -2,7 +2,7 @@
 session_start(); // must be first
 require "db.php";
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {  // Only run if form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") { 
     if (!isset($_SESSION['users'])) {
         $_SESSION['users'] = [];
     }
@@ -54,6 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {  // Only run if form is submitted
 <p><a href="login.php">Back to login</a></p>
 </body>
 </html>
+
 
 
 
