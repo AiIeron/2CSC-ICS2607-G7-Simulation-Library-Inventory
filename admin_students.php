@@ -33,8 +33,8 @@ while($row = $res->fetch_assoc()) {
         <td>{$row['STU_EMAIL']}</td>
         <td>{$row['STU_PHONE_NUM']}</td>
         <td>
-            <a href='TOTAL.php?edit={$row['STU_ID_NUM']}'>Edit</a> |
-            <a href='TOTAL.php?delete={$row['STU_ID_NUM']}' onclick='return confirm(\"Delete order?\")'>Delete</a>
+            <a href='edit.php'>Edit</a> |
+            <a href='delete.php' onclick='return confirm(\"Delete order?\")'>Delete</a>
         </td>
     </tr>";
 }
