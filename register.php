@@ -1,4 +1,13 @@
-<!doctype html>
+<?php
+session_start(); // must be first
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  $_SESSION['email'] = $_POST['email'];
+  $_SESSION['password'] = $_POST['password'];
+    exit;
+}
+?>
+
+<!DOCTYPE html>  
 <html>
 <head><meta charset="utf-8"><title>Truthary Lib | Register</title></head>
 <body>
@@ -14,7 +23,8 @@
   <label>Email:<br><input type="email" name="email" required></label><br><br>
   <label>Password:<br><input type="password" name="password" required></label><br><br>
   <label>Confirm Password:<br><input type="password" name="password2" required></label><br><br>
-  <button type="submit">Create Account</button>
+  <button type="submit" name="register" value="register">Register</button>
+  <button type="submit" name="register" value="register">Register</button>
 </form>
 <p><a href="login.php">Back to login</a></p>
 </body>
