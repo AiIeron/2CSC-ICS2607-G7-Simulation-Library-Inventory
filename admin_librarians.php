@@ -1,3 +1,7 @@
+<?php 
+require 'db.php'
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,6 +22,24 @@
         <th>Librarian Email</th>
         <th>Actions</th>
     </tr>
+
+    <?php
+$res = $conn->query("SELECT * FROM LIBRARIAN");
+
+while($row = $res->fetch_assoc()) {
+    echo "<tr>
+        <td>{$row['LIB_ID']}</td>
+        <td>{$row['LIB_FNAME']}</td>
+        <td>{$row['LIB_LNAME']}</td>
+        <td>{$row['LIB_EMAIL']}</td>
+        <td>{$row['LIB_PHONE_NUM']}</td>
+        <td>
+            <a href='TOTAL.php?edit={$row['STU_ID_NUM']}'>Edit</a> |
+            <a href='TOTAL.php?delete={$row['STU_ID_NUM']}' onclick='return confirm(\"Delete order?\")'>Delete</a>
+        </td>
+    </tr>";
+}
+?>
 </table>
 
 </body>
