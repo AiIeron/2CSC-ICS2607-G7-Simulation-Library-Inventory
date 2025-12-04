@@ -1,4 +1,5 @@
 <?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 $pub_id = $_POST['p_id'];
 $genre_id = $_POST['g_id'];
 
@@ -25,6 +26,7 @@ if ($pubCheck->num_rows == 0) {
                  VALUES ('$id', '$title', $age, '$status', '$pub_id', '$genre_id')";
     $conn->query($query);
     echo "Book added successfully!";
+}
 }
 ?>
 <!DOCTYPE html>  
@@ -55,4 +57,5 @@ if ($pubCheck->num_rows == 0) {
 </body>
 
 </html>
+
 
