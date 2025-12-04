@@ -45,15 +45,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <label>First Name:<br><input type="text" name="fname" required></label><br><br>
   <label>Surname:<br><input type="text" name="lname" required></label><br><br>
   <label>Student ID:<br><input type="text" name="id" required></label><br><br>
-  <label>Phone No.:<br><input type="text" name="phone"></label><br><br>         
+   <label>Phone No.:<br>
+      <input type="text" name="phone" pattern="[0-9]{11}" title="11 digits only">
+  </label><br><br>   
   <label>Email:<br><input type="email" name="email" required></label><br><br>
   <label>Password:<br><input type="password" name="password" required></label><br><br>
-  <label>Confirm Password:<br><input type="password" name="password2" required></label><br><br>
   <button type="submit" name="register" value="register">Register</button>
 </form>
 <p><a href="login.php">Back to login</a></p>
 </body>
 </html>
+
 
 
 
