@@ -1,10 +1,35 @@
 <?php
 session_start(); // must be first
+
+require db.php;
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $_SESSION['email'] = $_POST['email'];
   $_SESSION['password'] = $_POST['password'];
     exit;
 }
+$s_id = $_POST['id'];
+$s_fn = $_POST['fname'];
+$s_ln = $_POST['lname'];
+$s_pn = $_POST['phone'];
+$s_email = $_POST['email'];
+$query = "INSERT INTO student (STUDENT_ID, STU_FNAME, STU_LNAME, STU_PHONE_NUM, STU_EMAIL)
+VALUES ('$s_id', '$s_fn', '$s_ln', '$s_phone', '$s_email')";
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+echo "Connected successfully\n";
+if(mysqli_query($conn, $query)){
+    echo "Total: $dprice\n";
+    echo "updated successfully!";
+}
+else{
+    echo "Error!: {$conn -> error}";
+}
+
+$conn->close();  
 ?>
 
 <!DOCTYPE html>  
@@ -29,3 +54,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <p><a href="login.php">Back to login</a></p>
 </body>
 </html>
+
