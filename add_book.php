@@ -34,7 +34,7 @@ if ($pubCheck->num_rows == 0) {
 <html>
 <head><meta charset="utf-8"><title>Truthary Lib | add books</title></head>
 <body>
-<h2>Create Account (Student)</h2>
+<h2>Admin control</h2>
 
 <!-- Don't forget to add the errror text here..-->
 
@@ -58,6 +58,7 @@ if ($pubCheck->num_rows == 0) {
 </body>
 
 </html>
+
 
 
 
