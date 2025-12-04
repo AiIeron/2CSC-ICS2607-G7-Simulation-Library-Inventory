@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $query = "INSERT INTO AUTHOR (AUTH_ID, AUTH_NAME) 
                  VALUES ('$id', '$name')";
     $conn->query($query);
-    echo "Librarian added successfully!";
+    echo "Author added successfully!";
 }
 ?>
 <!DOCTYPE html>  
@@ -28,3 +28,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </body>
 
 </html>
+
