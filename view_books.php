@@ -39,9 +39,7 @@ $result = mysqli_query($conn, $query);
                 <td><?php echo htmlspecialchars($row['BOOK_TITLE']); ?></td>
                 <td><?php echo htmlspecialchars($row['PUB_NAME']); ?></td>
                 <td>
-                    <a href="rent_book.php?book_id=<?php echo urlencode($row['BOOK_ID']); ?>">
-                        Rent
-                    </a>
+                    <a href="rent_book.php?BOOK_ID=<?php echo urlencode($row['BOOK_ID']); ?>">Rent</a>
                 </td>
             </tr>
         <?php } ?>
