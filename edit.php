@@ -3,14 +3,14 @@ require "db.php";
 
 $message = '';
 
-// Map tables to their primary key columns and editable columns
+// Map tables to their primary key columns and editable columns (match DB schema)
 $tableMap = [
-    'STUDENT' => ['pk' => 'STU_ID_NUM', 'columns' => ['STU_NAME', 'STU_EMAIL', 'STU_PHONE']],
-    'LIBRARIAN' => ['pk' => 'LIB_ID_NUM', 'columns' => ['LIB_NAME', 'LIB_EMAIL']],
-    'BOOK' => ['pk' => 'BOOK_ID', 'columns' => ['BOOK_TITLE', 'BOOK_YEAR', 'BOOK_COPIES']],
+    'STUDENT' => ['pk' => 'STU_ID_NUM', 'columns' => ['STU_FNAME', 'STU_LNAME', 'STU_EMAIL', 'STU_PHONE_NUM']],
+    'LIBRARIAN' => ['pk' => 'LIB_ID', 'columns' => ['LIB_FNAME', 'LIB_LNAME', 'LIB_PHONE_NUM', 'LIB_EMAIL']],
+    'BOOK' => ['pk' => 'BOOK_ID', 'columns' => ['BOOK_TITLE', 'BOOK_AGE_RATING', 'BOOK_STATUS', 'PUB_ID', 'GENRE_ID']],
     'AUTHOR' => ['pk' => 'AUTH_ID', 'columns' => ['AUTH_NAME']],
-    'PUBLISHER' => ['pk' => 'PUB_ID', 'columns' => ['PUB_NAME', 'PUB_CITY']],
-    'GENRE' => ['pk' => 'GENRE_ID', 'columns' => ['GENRE_NAME']],
+    'PUBLISHER' => ['pk' => 'PUB_ID', 'columns' => ['PUB_NAME', 'PUB_ADDRESS']],
+    'GENRE' => ['pk' => 'GENRE_ID', 'columns' => ['GENRE_NAME', 'GENRE_DESC']],
     'RENTAL' => ['pk' => 'RENT_ID', 'columns' => ['RENT_DATE', 'RENT_EXPIRY_DATE', 'RENT_FINE', 'BOOK_ID', 'STU_ID_NUM', 'LIB_ID', 'RETURN_DATE']]
 ];
 
