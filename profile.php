@@ -2,7 +2,7 @@
 session_start();
 require 'db.php';
 
-if (!isset($_SESSION['STU_ID_NUM'])) {
+if (!isset($_SESSION['stu_id'])) {
     header("Location: profile.php");
     exit();
 }
