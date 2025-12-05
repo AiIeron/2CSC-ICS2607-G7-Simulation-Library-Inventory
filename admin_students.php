@@ -11,8 +11,6 @@ require 'db.php'
 
 <h2>Students</h2>
 
-<a href="add_student.php">Add Student</a>
-
 <table border="1">
     <tr>
         <th>ID Number</th>
