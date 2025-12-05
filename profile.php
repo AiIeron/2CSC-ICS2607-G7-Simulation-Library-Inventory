@@ -7,7 +7,7 @@ if (!isset($_SESSION['stu_id'])) {
     exit();
 }
 
-$stu_id = $_SESSION['STU_ID_NUM'];
+$stu_id = $_SESSION['stu_id'];
 
 $query = "
     SELECT STU_FNAME, STU_LNAME, STU_PHONE_NUM, STU_EMAIL 
