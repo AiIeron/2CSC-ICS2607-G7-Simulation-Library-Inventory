@@ -174,12 +174,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <script>
     const columnMap = {
-        'STUDENT': ['STU_NAME', 'STU_EMAIL', 'STU_PHONE'],
-        'LIBRARIAN': ['LIB_NAME', 'LIB_EMAIL'],
-        'BOOK': ['BOOK_TITLE', 'BOOK_YEAR', 'BOOK_COPIES'],
+        'STUDENT': ['STU_FNAME', 'STU_LNAME', 'STU_EMAIL', 'STU_PHONE_NUM'],
+        'LIBRARIAN': ['LIB_FNAME', 'LIB_LNAME', 'LIB_EMAIL', 'LIB_PHONE_NUM', 'LIB_EMAIL'],
+        'BOOK': ['BOOK_TITLE', 'BOOK_AGE_RATING', 'BOOK_STATUS', 'PUB_ID','GENRE_ID'],
         'AUTHOR': ['AUTH_NAME'],
-        'PUBLISHER': ['PUB_NAME', 'PUB_CITY'],
-        'GENRE': ['GENRE_NAME'],
+        'PUBLISHER': ['PUB_NAME', 'PUB_ADDRESS'],
+        'GENRE': ['GENRE_NAME', 'GENRE_DESC'],
         'RENTAL': ['RENT_DATE', 'RENT_EXPIRY_DATE', 'RENT_FINE', 'BOOK_ID', 'STU_ID_NUM', 'LIB_ID', 'RETURN_DATE']
     };
 
@@ -201,3 +201,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </script>
 </body>
 </html>
+
