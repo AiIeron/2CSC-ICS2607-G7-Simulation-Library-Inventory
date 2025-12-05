@@ -1,5 +1,22 @@
-<?php 
-require 'db.php'
+<?php
+session_start();
+require 'db.php';
+
+if (!isset($_SESSION['STU_ID_NUM'])) {
+    header("Location: login.php");
+    exit();
+}
+
+$stu_id = $_SESSION['STU_ID_NUM'];
+
+$query = "
+    SELECT STU_FNAME, STU_LNAME, STU_PHONE_NUM, STU_EMAIL 
+    FROM STUDENT 
+    WHERE STU_ID_NUM = '$stu_id'
+";
+
+$result = mysqli_query($conn, $query);
+$user = mysqli_fetch_assoc($result);
 ?>
 <!DOCTYPE html>
 <html>
@@ -10,26 +27,17 @@ require 'db.php'
 
 <h2>My Profile</h2>
 
-<p><strong>Name:</strong> <?php echo htmlspecialchars($data['STU_FNAME'] . " " . $data['STU_LNAME']); ?></p>
-<p><strong>Email:</strong> <?php echo htmlspecialchars($data['STU_EMAIL']); ?></p>
-<p><strong>Phone:</strong> <?php echo htmlspecialchars($data['STU_PHONE_NUM']); ?></p>
+<a href="home.php">Back to Home</a>
 
-<h3>Update Profile</h3>
+<p><strong>ID:</strong> <?php echo htmlspecialchars($stu_id); ?></p>
+<p><strong>Name:</strong> <?php echo htmlspecialchars($user['STU_FNAME'] . " " . $user['STU_LNAME']); ?></p>
+<p><strong>Phone:</strong> <?php echo htmlspecialchars($user['STU_PHONE_NUM']); ?></p>
+<p><strong>Email:</strong> <?php echo htmlspecialchars($user['STU_EMAIL']); ?></p>
 
-<form method="POST">
-    <label>New Phone:</label><br>
-    <input type="text" name="phone" required maxlength="11"><br><br>
+<br>
 
-    <label>New Email:</label><br>
-    <input type="email" name="email" required><br><br>
-
-    <label>New Password:</label><br>
-    <input type="password" name="password" required><br><br>
-
-    <button type="submit">Update</button>
-</form>
-
-<a href="home.php">Back</a>
+<a href="logout.php">Logout</a>
 
 </body>
 </html>
+
