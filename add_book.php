@@ -5,7 +5,7 @@ $pub_id = $_POST['p_id'];
 $genre_id = $_POST['g_id'];
 
 $pubCheck = $conn->query("SELECT * FROM PUBLISHER WHERE PUB_ID = '$pub_id'");
-$genreCheck = $conn->query("SELECT * FROM BOOKGENRE WHERE GENRE_ID = '$genre_id'");
+$genreCheck = $conn->query("SELECT * FROM GENRE WHERE GENRE_ID = '$genre_id'");
 
 $status = (isset($_POST['fruit']) && $_POST['fruit'] == "avail") ? "Available" : "Not Available";
 
@@ -58,6 +58,7 @@ if ($pubCheck->num_rows == 0) {
 </body>
 
 </html>
+
 
 
 
