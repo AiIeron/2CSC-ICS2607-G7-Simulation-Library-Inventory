@@ -3,7 +3,7 @@ require "db.php";
 
 $message = '';
 $book = null;
-$bookID = $_GET['id'] ?? '';
+$bookID = $_GET['BOOK_ID'] ?? $_GET['book_id'] ?? '';
 
 // Validate book ID
 if (empty($bookID)) {
