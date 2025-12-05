@@ -1,5 +1,17 @@
-<?php 
-require 'db.php'
+<?php
+require 'db.php';
+
+$query = "
+    SELECT 
+        BOOK.BOOK_ID,
+        BOOK.BOOK_TITLE,
+        PUBLISHER.PUB_NAME
+    FROM BOOK
+    JOIN PUBLISHER ON BOOK.PUB_ID = PUBLISHER.PUB_ID
+    WHERE BOOK.BOOK_STATUS = 'Available'
+";
+
+$result = mysqli_query($conn, $query);
 ?>
 <!DOCTYPE html>
 <html>
@@ -20,20 +32,12 @@ require 'db.php'
         <th>Action</th>
     </tr>
 
-    <?php while ($row = mysqli_fetch_assoc($result)) { ?>
-        <tr>
-            <td><?php echo htmlspecialchars($row['BOOK_ID']); ?></td>
-            <td><?php echo htmlspecialchars($row['BOOK_TITLE']); ?></td>
-            <td><?php echo htmlspecialchars($row['PUB_NAME']); ?></td>
-            <td>
-                <a href="rent_book.php?book_id=<?php echo $row['BOOK_ID']; ?>">
-                    Rent
-                </a>
-            </td>
-        </tr>
-    <?php } ?>
+    <?php if ($result && mysqli_num_rows($result) > 0) { ?>
+        <?php while ($row = mysqli_fetch_assoc($result)) { ?>
+            <tr>
+                <td><?php echo htmlspecialchars($row['BOOK_ID']); ?></td>
+                <td><?php echo htmlspecialchars($row['BOOK_TITLE']); ?></td>
+                <td><?php echo htmlspecialchars($row['PUB_NAME']); ?></td>
+                <td>
+                    <a href="rent_book.php?book_
 
-</table>
-
-</body>
-</html>
