@@ -32,7 +32,7 @@ while($row = $res->fetch_assoc()) {
         <td>{$row['RENT_EXPIRY_DATE']}</td>
         <td>{$row['RENT_FINE']}</td>
         <td>{$row['STU_ID_NUM']}</td>
-        <td>{$row['STU_ID']}</td>
+        <td>{$row['LIB_ID']}</td>
         <td>
             <a href='edit.php'>Edit</a> |
             <a href='delete.php' onclick='return confirm(\"Delete order?\")'>Delete</a>
