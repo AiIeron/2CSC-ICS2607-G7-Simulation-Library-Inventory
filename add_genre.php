@@ -28,6 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <button type="submit" name="register" value="register">ADD GENRE</button>
 </form>
 <p><a href="admin_home.php">Back to Admin home</a></p>
-<p><a href="admin_genre.php">Back to Admin genres</a></p>
+<p><a href="admin_genres.php">Back to Admin genres</a></p>
 </body>
+
 </html>
