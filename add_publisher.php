@@ -28,7 +28,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <button type="submit" name="register" value="register">ADD PUBLISHER</button>
 </form>
 <p><a href="admin_home.php">Back to Admin home</a></p>
-<p><a href="admin_publisher.php">Back to Admin publishers</a></p>
+<p><a href="admin_publishers.php">Back to Admin publishers</a></p>
 </body>
 
 </html>
+
