@@ -5,9 +5,8 @@
 </head>
 <body>
 
-<h2>Welcome, <?php echo htmlspecialchars($studentName); ?>!</h2>
+<h2>Welcome!</h2>
 
-<!-- BASIC NAVIGATION -->
 <ul>
     <li><a href="view_books.php">View Available Books</a></li>
     <li><a href="my_rentals.php">My Rentals</a></li>
