@@ -1,7 +1,5 @@
 <?php 
 require 'db.php'
-$query = "SELECT BOOK_ID, BOOK_TITLE, PUB_NAME FROM books";
-$result = mysqli_query($conn, $query);
 ?>
 <!DOCTYPE html>
 <html>
