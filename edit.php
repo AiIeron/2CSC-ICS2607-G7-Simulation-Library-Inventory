@@ -11,7 +11,7 @@ $tableMap = [
     'AUTHOR' => ['pk' => 'AUTH_ID', 'columns' => ['AUTH_NAME']],
     'PUBLISHER' => ['pk' => 'PUB_ID', 'columns' => ['PUB_NAME', 'PUB_CITY']],
     'GENRE' => ['pk' => 'GENRE_ID', 'columns' => ['GENRE_NAME']],
-    'RENTAL' => ['pk' => 'RENT_ID', 'columns' => ['RENT_DATE', 'RETURN_DATE']]
+    'RENTAL' => ['pk' => 'RENT_ID', 'columns' => ['RENT_DATE', 'RENT_EXPIRY_DATE', 'RENT_FINE', 'BOOK_ID', 'STU_ID_NUM', 'LIB_ID', 'RETURN_DATE']]
 ];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -33,21 +33,76 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $message = "Invalid column for this table.";
     } else {
         $pk = $tableMap[$table]['pk'];
-        
-        // Use prepared statement for security
-        $stmt = $conn->prepare("UPDATE $table SET $column = ? WHERE $pk = ?");
-        $stmt->bind_param("ss", $newValue, $id);
-        
-        if ($stmt->execute()) {
-            if ($stmt->affected_rows > 0) {
-                $message = "Record updated successfully!";
-            } else {
-                $message = "No record found with that ID.";
+
+        // Additional validation for RENTAL table fields
+        $validationFailed = false;
+        if ($table === 'RENTAL') {
+            // Foreign key checks
+            if ($column === 'BOOK_ID') {
+                $chk = $conn->prepare("SELECT 1 FROM BOOK WHERE BOOK_ID = ?");
+                $chk->bind_param("s", $newValue);
+                $chk->execute();
+                $r = $chk->get_result();
+                if (!$r || $r->num_rows == 0) {
+                    $message = "Invalid Book ID.";
+                    $validationFailed = true;
+                }
+                $chk->close();
+            } elseif ($column === 'STU_ID_NUM') {
+                $chk = $conn->prepare("SELECT 1 FROM STUDENT WHERE STU_ID_NUM = ?");
+                $chk->bind_param("s", $newValue);
+                $chk->execute();
+                $r = $chk->get_result();
+                if (!$r || $r->num_rows == 0) {
+                    $message = "Invalid Student ID.";
+                    $validationFailed = true;
+                }
+                $chk->close();
+            } elseif ($column === 'LIB_ID') {
+                $chk = $conn->prepare("SELECT 1 FROM LIBRARIAN WHERE LIB_ID = ?");
+                $chk->bind_param("s", $newValue);
+                $chk->execute();
+                $r = $chk->get_result();
+                if (!$r || $r->num_rows == 0) {
+                    $message = "Invalid Librarian ID.";
+                    $validationFailed = true;
+                }
+                $chk->close();
             }
-        } else {
-            $message = "Error updating record: " . $stmt->error;
+
+            // Date/number format checks
+            if (!$validationFailed && in_array($column, ['RENT_DATE', 'RENT_EXPIRY_DATE'])) {
+                $d = DateTime::createFromFormat('Y-m-d', $newValue);
+                if (!$d || $d->format('Y-m-d') !== $newValue) {
+                    $message = "Invalid date format. Use YYYY-MM-DD.";
+                    $validationFailed = true;
+                }
+            }
+
+            if (!$validationFailed && $column === 'RENT_FINE') {
+                if (!is_numeric($newValue)) {
+                    $message = "Rent fine must be a numeric value.";
+                    $validationFailed = true;
+                }
+            }
         }
-        $stmt->close();
+
+        if (!$validationFailed) {
+            // Use prepared statement for security
+            $stmt = $conn->prepare("UPDATE $table SET $column = ? WHERE $pk = ?");
+            $stmt->bind_param("ss", $newValue, $id);
+
+            if ($stmt->execute()) {
+                if ($stmt->affected_rows > 0) {
+                    $message = "Record updated successfully!";
+                } else {
+                    $message = "No record found with that ID.";
+                }
+            } else {
+                $message = "Error updating record: " . $stmt->error;
+            }
+            $stmt->close();
+        }
     }
 }
 ?>
@@ -125,8 +180,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         'AUTHOR': ['AUTH_NAME'],
         'PUBLISHER': ['PUB_NAME', 'PUB_CITY'],
         'GENRE': ['GENRE_NAME'],
-        'RENTAL': ['RENT_DATE', 'RETURN_DATE']
+        'RENTAL': ['RENT_DATE', 'RENT_EXPIRY_DATE', 'RENT_FINE', 'BOOK_ID', 'STU_ID_NUM', 'LIB_ID', 'RETURN_DATE']
     };
+
 
     function updateColumns() {
         const table = document.querySelector('select[name="table"]').value;

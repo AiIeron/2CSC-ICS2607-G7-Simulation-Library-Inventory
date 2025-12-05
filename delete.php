@@ -56,6 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <option value="PUBLISHER">Publisher</option>
             <option value="GENRE">Genre</option>
             <option value="LIBRARIAN">Librarian</option>
+            <option value="RENTAL">Rental</option>
         </select>
     </label><br><br>
     <label>Primary Key / ID:<br>
