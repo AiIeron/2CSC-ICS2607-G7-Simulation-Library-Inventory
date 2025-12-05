@@ -40,4 +40,4 @@ $result = mysqli_query($conn, $query);
                 <td><?php echo htmlspecialchars($row['PUB_NAME']); ?></td>
                 <td>
                     <a href="rent_book.php?book_
-
+}
