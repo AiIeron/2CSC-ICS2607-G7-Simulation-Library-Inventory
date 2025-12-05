@@ -3,7 +3,7 @@ session_start();
 require 'db.php';
 
 if (!isset($_SESSION['STU_ID_NUM'])) {
-    header("Location: login.php");
+    header("Location: profile.php");
     exit();
 }
 
