@@ -2,8 +2,8 @@
 session_start();
 require 'db.php';
 
-if (!isset($_SESSION['STU_ID_NUM'])) {
-    header("Location: my_rentals.php");
+if (!isset($_SESSION['stu_id'])) {
+    header("Location: login.php");
     exit();
 }
 
