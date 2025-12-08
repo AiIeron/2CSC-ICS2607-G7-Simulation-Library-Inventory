@@ -10,9 +10,11 @@ require 'db.php'
 </head>
 <body>
 
+<div class="container">
+
 <h2>Publishers</h2>
 
-<a href="add_publisher.php">Add Publisher</a>
+<a href="add_publisher.php" class="btn">Add Publisher</a>
 
 <table border="1">
     <tr>
@@ -30,13 +32,16 @@ while($row = $res->fetch_assoc()) {
         <td>{$row['PUB_NAME']}</td>
         <td>{$row['PUB_ADDRESS']}</td>
         <td>
-            <a href='edit.php'>Edit</a> |
-            <a href='delete.php' onclick='return confirm(\"Delete order?\")'>Delete</a>
+            <a href='edit.php' class='btn btn-secondary'>Edit</a> |
+            <a href='delete.php' class='btn btn-danger' onclick='return confirm(\"Delete order?\")'>Delete</a>
         </td>
     </tr>";
 }
 ?>
 </table>
 
+</div>
+
 </body>
 </html>
+
