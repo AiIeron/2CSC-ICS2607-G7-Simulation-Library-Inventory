@@ -11,24 +11,41 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 <!DOCTYPE html>  
 <html>
-<head><meta charset="utf-8"><title>Truthary Lib | add books</title>
-<link rel="stylesheet" href="style.css"></head>
+<head>
+<meta charset="utf-8">
+<title>Truthary Lib | add books</title>
+<link rel="stylesheet" href="style.css">
+</head>
 <body>
-<h2>Admin control</h2>
 
-<!-- Don't forget to add the errror text here..-->
+<div class="container">
 
-<form method="post" action="add_author.php">
-    <h1> ADD AUTHOR </h1>
-  <label>Author ID:<br><input type="text" name="id" required></label><br><br>
-  <label>Author name:<br><input type="text" name="name" required></label><br><br>
-  <button type="submit" name="register" value="register">ADD AUTHOR</button>
-</form>
-<p><a href="admin_home.php">Back to Admin home</a></p>
-<p><a href="admin_authors.php">Back to Admin author</a></p>
+    <h2>Admin control</h2>
+
+    <div class="auth-box">
+        <form method="post" action="add_author.php">
+            <h1> ADD AUTHOR </h1>
+
+            <label>Author ID:<br>
+                <input type="text" name="id" required>
+            </label><br><br>
+
+            <label>Author name:<br>
+                <input type="text" name="name" required>
+            </label><br><br>
+
+            <button type="submit" name="register" value="register">ADD AUTHOR</button>
+        </form>
+    </div>
+
+    <p><a href="admin_home.php">Back to Admin home</a></p>
+    <p><a href="admin_authors.php">Back to Admin author</a></p>
+
+</div>
+
 </body>
-
 </html>
+
 
 
 
