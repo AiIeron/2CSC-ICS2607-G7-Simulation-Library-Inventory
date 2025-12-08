@@ -6,17 +6,24 @@
 </head>
 <body>
 
+<div class="container">
+
 <h2>Admin Home</h2>
 
+<div class="auth-box">
 <ul>
-    <li><a href="admin_books.php">Manage Books</a></li>
-    <li><a href="admin_librarians.php">Manage Librarians</a></li>    
-    <li><a href="admin_students.php">Manage Students</a></li>
-    <li><a href="admin_authors.php">Manage Authors</a></li>
-    <li><a href="admin_publishers.php">Manage Publishers</a></li>
-    <li><a href="admin_genres.php">Manage Genres</a></li>
-    <li><a href="admin_rentals.php">Manage Rentals</a></li>
+    <li><a href="admin_books.php" class="btn">Manage Books</a></li>
+    <li><a href="admin_librarians.php" class="btn">Manage Librarians</a></li>    
+    <li><a href="admin_students.php" class="btn">Manage Students</a></li>
+    <li><a href="admin_authors.php" class="btn">Manage Authors</a></li>
+    <li><a href="admin_publishers.php" class="btn">Manage Publishers</a></li>
+    <li><a href="admin_genres.php" class="btn">Manage Genres</a></li>
+    <li><a href="admin_rentals.php" class="btn">Manage Rentals</a></li>
 </ul>
+</div>
+
+</div>
 
 </body>
 </html>
+
