@@ -10,9 +10,11 @@ require 'db.php'
 </head>
 <body>
 
+<div class="container">
+
 <h2>Authors</h2>
 
-<a href="add_author.php">Add Author</a>
+<a href="add_author.php" class="btn">Add Author</a>
 
 <table border="1">
     <tr>
@@ -28,13 +30,15 @@ while($row = $res->fetch_assoc()) {
         <td>{$row['AUTHOR_ID']}</td>
         <td>{$row['AUTHOR_NAME']}</td>
         <td>
-            <a href='edit.php'>Edit</a> |
-            <a href='delete.php' onclick='return confirm(\"Delete order?\")'>Delete</a>
+            <a href='edit.php' class='btn btn-secondary'>Edit</a> |
+            <a href='delete.php' class='btn btn-danger' onclick='return confirm(\"Delete order?\")'>Delete</a>
         </td>
     </tr>";
 }
 ?>
 </table>
+
+</div>
 
 </body>
 </html>
