@@ -14,7 +14,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 <!DOCTYPE html>  
 <html>
-<head><meta charset="utf-8"><title>Truthary Lib | add genres</title></head>
+<head><meta charset="utf-8"><title>Truthary Lib | add genres</title>
+<link rel="stylesheet" href="style.css">
+</head>
 <body>
 <h2>Admin control</h2>
 
@@ -32,3 +34,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </body>
 
 </html>
+
