@@ -32,7 +32,8 @@ if ($pubCheck->num_rows == 0) {
 ?>
 <!DOCTYPE html>  
 <html>
-<head><meta charset="utf-8"><title>Truthary Lib | add books</title></head>
+<head><meta charset="utf-8"><title>Truthary Lib | add books</title>
+<link rel="stylesheet" href="style.css"></head>
 <body>
 <h2>Admin control</h2>
 
@@ -58,6 +59,7 @@ if ($pubCheck->num_rows == 0) {
 </body>
 
 </html>
+
 
 
 
