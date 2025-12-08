@@ -10,6 +10,8 @@ require 'db.php'
 </head>
 <body>
 
+<div class="container">
+
 <h2>Students</h2>
 
 <table border="1">
@@ -32,13 +34,16 @@ while($row = $res->fetch_assoc()) {
         <td>{$row['STU_EMAIL']}</td>
         <td>{$row['STU_PHONE_NUM']}</td>
         <td>
-            <a href='edit.php'>Edit</a> |
-            <a href='delete.php' onclick='return confirm(\"Delete order?\")'>Delete</a>
+            <a href='edit.php' class='btn btn-secondary'>Edit</a> |
+            <a href='delete.php' class='btn btn-danger' onclick='return confirm(\"Delete order?\")'>Delete</a>
         </td>
     </tr>";
 }
 ?>
 </table>
 
+</div>
+
 </body>
 </html>
+
