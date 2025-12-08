@@ -14,13 +14,12 @@ if ($pubCheck->num_rows == 0) {
 } elseif ($genreCheck->num_rows == 0) {
     echo "Error: Genre ID does not exist.";
 } else {
-    // Safe to insert book
     $title = $_POST['title'];
     $age = $_POST['age'];
     if (!ctype_digit($age)) {
     echo "Error: Age must be a number.";
     } else {
-    $age = (int)$age; // convert to integer
+    $age = (int)$age;
 }
     $id = $_POST['id'];
     $query = "INSERT INTO BOOK (BOOK_ID, BOOK_TITLE, BOOK_AGE_RATING, BOOK_STATUS, PUB_ID, GENRE_ID) 
@@ -32,13 +31,18 @@ if ($pubCheck->num_rows == 0) {
 ?>
 <!DOCTYPE html>  
 <html>
-<head><meta charset="utf-8"><title>Truthary Lib | add books</title>
-<link rel="stylesheet" href="style.css"></head>
+<head>
+<meta charset="utf-8">
+<title>Truthary Lib | add books</title>
+<link rel="stylesheet" href="style.css">
+</head>
 <body>
+
+<div class="container">
+
 <h2>Admin control</h2>
 
-<!-- Don't forget to add the errror text here..-->
-
+<div class="auth-box">
 <form method="post" action="add_book.php">
     <h1> ADD BOOKS </h1>
   <label>Book Title:<br><input type="text" name="title"></label><br><br>
@@ -54,11 +58,16 @@ if ($pubCheck->num_rows == 0) {
   <label>Genre id:<br><input type="number" name="g_id"></label><br><br>
   <button type="submit" name="register" value="register">ADD BOOK</button>
 </form>
+</div>
+
 <p><a href="admin_home.php">Back to Admin home</a></p>
 <p><a href="admin_books.php">Back to Admin books</a></p>
-</body>
 
+</div>
+
+</body>
 </html>
+
 
 
 
