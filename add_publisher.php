@@ -14,14 +14,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 <!DOCTYPE html>  
 <html>
-<head><meta charset="utf-8"><title>Truthary Lib | add punlisher</title>
+<head>
+<meta charset="utf-8">
+<title>Truthary Lib | add punlisher</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<div class="container">
+
 <h2>Admin control</h2>
 
-<!-- Don't forget to add the errror text here..-->
-
+<div class="auth-box">
 <form method="post" action="add_publisher.php">
     <h1> ADD PUBLISHER </h1>
   <label>Publisher ID:<br><input type="text" name="id" required></label><br><br>
@@ -29,10 +33,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <label>Publisher address:<br><input type="text" name="address" required></label><br><br>
   <button type="submit" name="register" value="register">ADD PUBLISHER</button>
 </form>
+</div>
+
 <p><a href="admin_home.php">Back to Admin home</a></p>
 <p><a href="admin_publishers.php">Back to Admin publishers</a></p>
-</body>
 
+</div>
+
+</body>
 </html>
+
+
 
 
