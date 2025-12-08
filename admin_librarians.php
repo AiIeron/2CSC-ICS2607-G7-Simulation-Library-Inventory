@@ -10,9 +10,11 @@ require 'db.php'
 </head>
 <body>
 
+<div class="container">
+
 <h2>Librarians</h2>
 
-<a href="add_librarian.php">Add Librarian</a>
+<a href="add_librarian.php" class="btn">Add Librarian</a>
 
 <table border="1">
     <tr>
@@ -35,13 +37,15 @@ while($row = $res->fetch_assoc()) {
         <td>{$row['LIB_EMAIL']}</td>
         <td>{$row['LIB_PHONE_NUM']}</td>
         <td>
-            <a href='edit.php'>Edit</a> |
-            <a href='delete.php' onclick='return confirm(\"Delete order?\")'>Delete</a>
+            <a href='edit.php' class='btn btn-secondary'>Edit</a> |
+            <a href='delete.php' class='btn btn-danger' onclick='return confirm(\"Delete order?\")'>Delete</a>
         </td>
     </tr>";
 }
 ?>
 </table>
+
+</div>
 
 </body>
 </html>
