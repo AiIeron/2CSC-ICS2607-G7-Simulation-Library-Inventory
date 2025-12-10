@@ -22,12 +22,17 @@ $user = mysqli_fetch_assoc($result);
 <html>
 <head>
     <title>My Profile</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<div class="container">
+
 <h2>My Profile</h2>
 
-<a href="home.php">Back to Home</a>
+<a href="home.php" class="btn">Back to Home</a>
+
+<div class="auth-box">
 
 <p><strong>ID:</strong> <?php echo htmlspecialchars($stu_id); ?></p>
 <p><strong>Name:</strong> <?php echo htmlspecialchars($user['STU_FNAME'] . " " . $user['STU_LNAME']); ?></p>
@@ -36,8 +41,13 @@ $user = mysqli_fetch_assoc($result);
 
 <br>
 
-<a href="logout.php">Logout</a>
+<a href="logout.php" class="btn btn-danger">Logout</a>
+
+</div>
+
+</div>
 
 </body>
 </html>
+
 
