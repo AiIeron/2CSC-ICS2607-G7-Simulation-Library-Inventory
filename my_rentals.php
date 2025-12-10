@@ -28,12 +28,15 @@ $result = mysqli_query($conn, $query);
 <html>
 <head>
     <title>My Rentals</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<div class="container">
+
 <h2>My Rentals</h2>
 
-<a href="home.php">Back to Home</a>
+<a href="home.php" class="btn">Back to Home</a>
 
 <table border="1" cellpadding="5" cellspacing="0">
     <tr>
@@ -61,6 +64,8 @@ $result = mysqli_query($conn, $query);
     <?php } ?>
 
 </table>
+
+</div>
 
 </body>
 </html>
