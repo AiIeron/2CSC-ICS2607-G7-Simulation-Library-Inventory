@@ -3,7 +3,6 @@ require "db.php";
 
 $message = '';
 
-// Map tables to their primary key columns
 $tableMap = [
     'STUDENT' => 'STU_ID_NUM',
     'LIBRARIAN' => 'LIB_ID_NUM',
@@ -42,10 +41,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="utf-8">
     <title>Delete Record</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<div class="container">
+
 <h2>Delete Record</h2>
+
 <?php if ($message) echo "<p>$message</p>"; ?>
+
+<div class="auth-box">
 <form method="post" action="delete.php">
     <label>Table:<br>
         <select name="table" required>
@@ -64,6 +70,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </label><br><br>
     <button type="submit">Delete Record</button>
 </form>
+</div>
+
 <p><a href="admin_home.php">Back to Admin Home</a></p>
+
+</div>
+
 </body>
 </html>
