@@ -17,12 +17,15 @@ $result = mysqli_query($conn, $query);
 <html>
 <head>
     <title>Available Books</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<div class="container">
+
 <h2>Available Books</h2>
 
-<a href="home.php">Back to Home</a>
+<a href="home.php" class="btn">Back to Home</a>
 
 <table border="1" cellpadding="5" cellspacing="0">
     <tr>
@@ -39,7 +42,7 @@ $result = mysqli_query($conn, $query);
                 <td><?php echo htmlspecialchars($row['BOOK_TITLE']); ?></td>
                 <td><?php echo htmlspecialchars($row['PUB_NAME']); ?></td>
                 <td>
-                    <a href="rent_book.php?BOOK_ID=<?php echo urlencode($row['BOOK_ID']); ?>">Rent</a>
+                    <a href="rent_book.php?BOOK_ID=<?php echo urlencode($row['BOOK_ID']); ?>" class="btn">Rent</a>
                 </td>
             </tr>
         <?php } ?>
@@ -51,6 +54,9 @@ $result = mysqli_query($conn, $query);
 
 </table>
 
+</div>
+
 </body>
 </html>
+
 
