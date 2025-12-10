@@ -35,7 +35,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         } else {
 
-            // Insert student into database
             $stmt = $conn->prepare("INSERT INTO STUDENT 
                 (STU_ID_NUM, STU_FNAME, STU_LNAME, STU_PHONE_NUM, STU_EMAIL, STU_PASS) 
                 VALUES (?, ?, ?, ?, ?, ?)");
@@ -54,13 +53,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <!DOCTYPE html>  
 <html>
-<head><meta charset="utf-8"><title>Truthary Lib | Register</title></head>
+<head>
+<meta charset="utf-8">
+<title>Truthary Lib | Register</title>
+<link rel="stylesheet" href="style.css">
+</head>
 <body>
+
+<div class="container">
+
 <h2>Create Account (Student)</h2>
 
-<?php if (!empty($error)) echo "<p style='color:red;'>$error</p>"; ?>
-<?php if (!empty($success)) echo "<p style='color:green;'>$success</p>"; ?>
+<?php if (!empty($error)) echo "<p class='error'>$error</p>"; ?>
+<?php if (!empty($success)) echo "<p class='success'>$success</p>"; ?>
 
+<div class="auth-box">
 <form method="post" action="register.php">
   <label>First Name:<br><input type="text" name="fname" required></label><br><br>
   <label>Surname:<br><input type="text" name="lname" required></label><br><br>
@@ -73,9 +80,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <label>Confirm Password:<br><input type="password" name="password2" required></label><br><br> 
   <button type="submit" name="register" value="register">Register</button>
 </form>
+</div>
+
 <p><a href="login.php">Back to login</a></p>
+
+</div>
+
 </body>
 </html>
+
+
 
 
 
