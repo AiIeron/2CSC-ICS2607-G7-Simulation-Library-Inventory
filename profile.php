@@ -41,6 +41,13 @@ $user = mysqli_fetch_assoc($result);
 
 <br>
 
+<a href="edit_profile.php" class="btn">Edit Profile</a>
+<form action="delete_profile.php" method="post" style="display:inline" onsubmit="return confirm('Are you sure you want to permanently delete your profile? This cannot be undone.');">
+    <button type="submit" class="btn btn-danger">Delete Profile</button>
+</form>
+
+<br><br>
+
 <a href="logout.php" class="btn btn-danger">Logout</a>
 
 </div>
