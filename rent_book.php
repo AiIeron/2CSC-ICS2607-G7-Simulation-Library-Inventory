@@ -107,5 +107,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $isAvailable) {
     </p>
     <p>
         <label>Librarian ID:<br>
-            <inpu
+            <input type="text" name="lib_id" required>
+        </label>
+    </p>
+    <p>Confirm renting this book? (Expiry date: <?php echo date('Y-m-d', strtotime('+14 days')); ?>)</p>
+    <button type="submit" class="btn">Rent Book</button>
+    <a href="view_books.php" class="btn btn-secondary">Cancel</a>
+</form>
+
+<?php endif; ?>
+
+</div>
+
+</div>
+
+</body>
+</html>
+
 
