@@ -27,8 +27,8 @@ $res = $conn->query("SELECT * FROM AUTHOR");
 
 while($row = $res->fetch_assoc()) {
     echo "<tr>
-        <td>{$row['AUTHOR_ID']}</td>
-        <td>{$row['AUTHOR_NAME']}</td>
+        <td>{$row['AUTH_ID']}</td>
+        <td>{$row['AUTH_NAME']}</td>
         <td>
             <a href='edit.php' class='btn btn-secondary'>Edit</a> |
             <a href='delete.php' class='btn btn-danger' onclick='return confirm(\"Delete order?\")'>Delete</a>
