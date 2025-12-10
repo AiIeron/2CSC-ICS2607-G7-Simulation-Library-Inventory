@@ -5,12 +5,10 @@ $message = '';
 $book = null;
 $bookID = $_GET['BOOK_ID'] ?? $_GET['book_id'] ?? '';
 
-// Validate book ID
 if (empty($bookID)) {
     die("Book ID not provided.");
 }
 
-// Fetch book details
 $stmt = $conn->prepare("SELECT BOOK_ID, BOOK_TITLE, BOOK_STATUS FROM BOOK WHERE BOOK_ID = ?");
 $stmt->bind_param("s", $bookID);
 $stmt->execute();
@@ -22,10 +20,8 @@ if (!$book) {
     die("Book not found.");
 }
 
-// Check if book is available
 $isAvailable = ($book["BOOK_STATUS"] === "Available");
 
-// Handle rental submission
 if ($_SERVER["REQUEST_METHOD"] == "POST" && $isAvailable) {
     $stuID = $_POST['stu_id'] ?? '';
     $libID = $_POST['lib_id'] ?? '';
@@ -35,7 +31,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $isAvailable) {
     } elseif (empty($libID)) {
         $message = "Librarian ID is required.";
     } else {
-        // Verify student exists
         $stmtStu = $conn->prepare("SELECT STU_ID_NUM FROM STUDENT WHERE STU_ID_NUM = ?");
         $stmtStu->bind_param("s", $stuID);
         $stmtStu->execute();
@@ -45,7 +40,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $isAvailable) {
         if ($stuResult->num_rows == 0) {
             $message = "Student ID not found.";
         } else {
-            // Verify librarian exists
             $stmtLib = $conn->prepare("SELECT LIB_ID FROM LIBRARIAN WHERE LIB_ID = ?");
             $stmtLib->bind_param("s", $libID);
             $stmtLib->execute();
@@ -55,7 +49,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $isAvailable) {
             if ($libResult->num_rows == 0) {
                 $message = "Librarian ID not found.";
             } else {
-                // Insert rental record
                 $rentDate = date('Y-m-d');
                 $expiryDate = date('Y-m-d', strtotime('+14 days'));
                 
@@ -63,7 +56,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $isAvailable) {
                 $stmtRental->bind_param("sssss", $rentDate, $expiryDate, $bookID, $stuID, $libID);
                 
                 if ($stmtRental->execute()) {
-                    // Update book status to Not Available
                     $stmtUpdate = $conn->prepare("UPDATE BOOK SET BOOK_STATUS = 'Not Available' WHERE BOOK_ID = ?");
                     $stmtUpdate->bind_param("s", $bookID);
                     $stmtUpdate->execute();
@@ -83,10 +75,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $isAvailable) {
 <html>
 <head>
     <title>Rent Book</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<div class="container">
+
 <h2>Rent Book: <?php echo htmlspecialchars($book["BOOK_TITLE"]); ?></h2>
+
+<div class="auth-box">
 
 <p><b>Book ID:</b> <?php echo htmlspecialchars($bookID); ?></p>
 <p><b>Status:</b> <?php echo htmlspecialchars($book["BOOK_STATUS"]); ?></p>
@@ -98,7 +95,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $isAvailable) {
 <?php if (!$isAvailable): ?>
 
 <p>This book is currently not available.</p>
-<a href="view_books.php">Back</a>
+<a href="view_books.php" class="btn">Back</a>
 
 <?php else: ?>
 
@@ -110,15 +107,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $isAvailable) {
     </p>
     <p>
         <label>Librarian ID:<br>
-            <input type="text" name="lib_id" required>
-        </label>
-    </p>
-    <p>Confirm renting this book? (Expiry date: <?php echo date('Y-m-d', strtotime('+14 days')); ?>)</p>
-    <button type="submit">Rent Book</button>
-    <a href="view_books.php">Cancel</a>
-</form>
+            <inpu
 
-<?php endif; ?>
-
-</body>
-</html>
