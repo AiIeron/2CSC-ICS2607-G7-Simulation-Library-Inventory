@@ -123,5 +123,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $isAvailable) {
 
 </body>
 </html>
-
-
