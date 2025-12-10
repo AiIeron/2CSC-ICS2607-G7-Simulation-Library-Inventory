@@ -3,7 +3,6 @@ require "db.php";
 
 $message = '';
 
-// Map tables to their primary key columns and editable columns (match DB schema)
 $tableMap = [
     'STUDENT' => ['pk' => 'STU_ID_NUM', 'columns' => ['STU_FNAME', 'STU_LNAME', 'STU_EMAIL', 'STU_PHONE_NUM']],
     'LIBRARIAN' => ['pk' => 'LIB_ID', 'columns' => ['LIB_FNAME', 'LIB_LNAME', 'LIB_PHONE_NUM', 'LIB_EMAIL']],
@@ -20,7 +19,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $column = $_POST['column'] ?? '';
     $newValue = $_POST['newValue'] ?? '';
 
-    // Validate table exists
     if (!isset($tableMap[$table])) {
         $message = "Invalid table selected.";
     } elseif (empty($id)) {
@@ -34,10 +32,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $pk = $tableMap[$table]['pk'];
 
-        // Additional validation for RENTAL table fields
         $validationFailed = false;
         if ($table === 'RENTAL') {
-            // Foreign key checks
             if ($column === 'BOOK_ID') {
                 $chk = $conn->prepare("SELECT 1 FROM BOOK WHERE BOOK_ID = ?");
                 $chk->bind_param("s", $newValue);
@@ -70,7 +66,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $chk->close();
             }
 
-            // Date/number format checks
             if (!$validationFailed && in_array($column, ['RENT_DATE', 'RENT_EXPIRY_DATE'])) {
                 $d = DateTime::createFromFormat('Y-m-d', $newValue);
                 if (!$d || $d->format('Y-m-d') !== $newValue) {
@@ -88,7 +83,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         if (!$validationFailed) {
-            // Use prepared statement for security
             $stmt = $conn->prepare("UPDATE $table SET $column = ? WHERE $pk = ?");
             $stmt->bind_param("ss", $newValue, $id);
 
@@ -111,6 +105,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="utf-8">
     <title>Edit Record</title>
+    <link rel="stylesheet" href="style.css">
     <style>
         body { font-family: Arial, sans-serif; margin: 20px; }
         .form-group { margin-bottom: 15px; }
@@ -124,14 +119,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </style>
 </head>
 <body>
+
+<div class="container">
+
 <h2>Edit Record</h2>
+
 <?php 
     if ($message) {
         $messageClass = (strpos($message, "successfully") !== false || strpos($message, "No record") !== false) ? "success" : "error";
         echo "<div class='message $messageClass'>$message</div>";
     }
 ?>
+
+<div class="auth-box">
 <form method="post" action="edit.php">
+
     <div class="form-group">
         <label>Table:<br>
             <select name="table" required onchange="updateColumns()">
@@ -167,10 +169,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </label>
     </div>
 
-    <button type="submit">Update Record</button>
+    <button type="submit" class="btn">Update Record</button>
 </form>
+</div>
 
 <p><a href="admin_home.php">Back to Admin Home</a></p>
+
+</div>
 
 <script>
     const columnMap = {
@@ -182,7 +187,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         'GENRE': ['GENRE_NAME', 'GENRE_DESC'],
         'RENTAL': ['RENT_DATE', 'RENT_EXPIRY_DATE', 'RENT_FINE', 'BOOK_ID', 'STU_ID_NUM', 'LIB_ID', 'RETURN_DATE']
     };
-
 
     function updateColumns() {
         const table = document.querySelector('select[name="table"]').value;
@@ -199,6 +203,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 </script>
+
 </body>
 </html>
+
+
 
