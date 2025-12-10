@@ -19,6 +19,7 @@
     <li><a href="admin_publishers.php" class="btn">Manage Publishers</a></li>
     <li><a href="admin_genres.php" class="btn">Manage Genres</a></li>
     <li><a href="admin_rentals.php" class="btn">Manage Rentals</a></li>
+    <li><a href="logout.php" class="btn btn-danger">Logout</a></li>
 </ul>
 </div>
 
