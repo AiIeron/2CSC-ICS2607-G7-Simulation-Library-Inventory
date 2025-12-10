@@ -15,7 +15,7 @@
     <li><a href="view_books.php" class="btn">View Available Books</a></li>
     <li><a href="my_rentals.php" class="btn">My Rentals</a></li>
     <li><a href="profile.php" class="btn">My Profile</a></li>
-    <li><a href="register.php" class="btn btn-danger">Logout</a></li>
+    <li><a href="logout.php" class="btn btn-danger">Logout</a></li>
 </ul>
 </div>
 
