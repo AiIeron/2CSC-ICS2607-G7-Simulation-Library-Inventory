@@ -7,7 +7,6 @@ $adminEmail = "admin@tlib.com";
 $adminPassword = "admin123";
 $failure = "";
 
-// Helper to safely trim POST values
 function POST($k) {
     return isset($_POST[$k]) ? trim($_POST[$k]) : "";
 }
@@ -17,7 +16,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $email = POST('email');
     $password = POST('password');
 
-    // admin (hardcoded)
     if ($email === $adminEmail && $password === $adminPassword) {
         $_SESSION['role'] = 'admin';
         $_SESSION['email'] = $email;
@@ -25,7 +23,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         exit;
     }
 
-      // Student
         $stmt2 = $conn->prepare("SELECT STU_ID_NUM, STU_EMAIL FROM STUDENT WHERE STU_EMAIL = ? AND STU_PASS = ?");
         if ($stmt2) {
             $stmt2->bind_param("ss", $email, $password);
@@ -45,37 +42,48 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $failure = "Internal error: " . $conn->error;
         }
 
-            // fallback failure
     if (empty($failure)) {
         $failure = "Incorrect username or password.";
     }
 }
-
-
 ?>
 <!doctype html>
 <html>
-<head><meta charset="utf-8"><title>Truthary Lib | Login</title></head>
+<head>
+<meta charset="utf-8">
+<title>Truthary Lib | Login</title>
+<link rel="stylesheet" href="style.css">
+</head>
 <body>
+
+<div class="container">
+
 <h2>Login</h2>
 
+<div class="auth-box">
 <form method="post" action="login.php">
     <?php if (!empty($failure)): ?>
-        <p style="color: red;"><?php echo htmlentities($failure); ?></p>
+        <p class="error"><?php echo htmlentities($failure); ?></p>
     <?php endif; ?>
   <label>Email:<br><input type="email" name="email" required></label><br><br>
   <label>Password:<br><input type="password" name="password" required></label><br><br>
   <button type="submit">Login</button>
   <?php
 if ( $failure !== false ) {
-    echo'<p style="color: red;">'.htmlentities($failure)."</p>\n";
+    echo'<p class="error">'.htmlentities($failure)."</p>\n";
 }
 ?>
 </form>
-<p><a href="register.php">Create Account</a></p>
-</body>
+</div>
 
+<p><a href="register.php">Create Account</a></p>
+
+</div>
+
+</body>
 </html>
+
+
 
 
 
